@@ -12,5 +12,7 @@ jobs:
     steps:
       - checkout
       # - run: sudo systemctl start docker
-      - run: docker build -t raudain123/docker-test-frontend .
-      - run: docker run raudain123/docker-test-frontend npm run test -- --coverage
+      - run: npm install
+      # - run: docker build -t raudain123/docker-test-frontend .
+      # - run: docker run raudain123/docker-test-frontend npm run test -- --coverage
+      - run: npm test -- --coverage
