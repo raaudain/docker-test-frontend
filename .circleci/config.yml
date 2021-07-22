@@ -3,11 +3,14 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cirlceci/node:7
+      - image: circleci/node:7
+        auth:
+          username: $docker_username
+          password: $docker_login
   # services:
   #   - docker
     steps:
       - checkout
-      - run: sudo systemctl start docker
+      # - run: sudo systemctl start docker
       - run: docker build -t raudain123/docker-test-frontend -f Dockerfile.dev .
       - run: docker run npm raudain123/docker-test-frontend npm run test -- --coverage
