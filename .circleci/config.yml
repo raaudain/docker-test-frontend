@@ -10,4 +10,4 @@ jobs:
       - checkout
       - run: sudo systemctl start docker
       - run: docker build -t raudain123/docker-test-frontend -f Dockerfile.dev .
-      - run: - docker run npm raudain123/docker-test-frontend npm run test -- --coverage
+      - run: docker run npm raudain123/docker-test-frontend npm run test -- --coverage
