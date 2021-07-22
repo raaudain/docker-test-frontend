@@ -2,6 +2,7 @@ version: 2.1
 
 jobs:
   build:
+    working_directory: /usr/app
     docker:
       - image: circleci/node:7
         auth:
@@ -13,6 +14,6 @@ jobs:
       - checkout
       # - run: sudo systemctl start docker
       - run: npm install
-      # - run: docker build -t raudain123/docker-test-frontend .
+      - run: docker build -t raudain123/docker-test-frontend .
       # - run: docker run raudain123/docker-test-frontend npm run test -- --coverage
-      - run: npm test -- --coverage
+      # - run: npm run test:coverage
