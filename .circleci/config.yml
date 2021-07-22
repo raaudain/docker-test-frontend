@@ -1,0 +1,10 @@
+version: 2.1
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t raudain123/docker-test-frontend -f Dockerfile.dev .
+
+script:
+  - docker run npm raudain123/docker-test-frontend npm run test -- --coverage
