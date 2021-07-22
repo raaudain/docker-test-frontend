@@ -1,4 +1,5 @@
 version: 2.1
+sudo: required
 
 jobs:
   build:
@@ -11,6 +12,5 @@ jobs:
   #   - docker
     steps:
       - checkout
-      - run: sudo systemctl start docker
       - run: docker build -t raudain123/docker-test-frontend -f Dockerfile.dev .
       - run: docker run npm raudain123/docker-test-frontend npm run test -- --coverage
