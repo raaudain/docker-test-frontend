@@ -8,12 +8,23 @@ jobs:
         auth:
           username: $docker_username
           password: $docker_login
+    
   # services:
   #   - docker
     steps:
       - checkout
       # - run: sudo systemctl start docker
-      - run: npm install
-      - run: docker build -t raudain123/docker-test-frontend .
+      # - run: npm install
+      - run: 
+          command: "sudo docker build -t raudain123/docker-test-frontend ."
       # - run: docker run raudain123/docker-test-frontend npm run test -- --coverage
       # - run: npm run test:coverage
+  # tests:
+  #   build:
+  #     docker:
+  #       context: .
+  #       dockerfile: Dockerfile.dev
+  #   volumes: 
+  #       - /usr/app/node_modules
+  #       - ./:/usr/app
+  #   command: "sudo npm run test"
