@@ -27,7 +27,7 @@ jobs:
     
     steps:
       - checkout
-      command: "sudo npm run test"
+      run: npm run test:coverage
 
 workflows:
   version: 2
