@@ -18,8 +18,8 @@ jobs:
       # - run: 
       #     command: "sudo docker build -t raudain123/docker-test-frontend ."
       # - run: docker run raudain123/docker-test-frontend npm run test -- --coverage
-      - run: 
-          command: "npm run start"
+      - run: npm start
+      - run: npm test:coverage
 #   test:
 #     build:
 #       docker:
