@@ -4,7 +4,7 @@ jobs:
   build:
     working_directory: ~/usr/app
     docker:
-      - image: circleci/node:7
+      - image: circleci/node:latest
         auth:
           username: $docker_username
           password: $docker_login
