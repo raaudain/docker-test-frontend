@@ -1,6 +1,18 @@
 version: 2.1
 
 jobs:
+  test:
+    working_directory: ~/usr/app
+    docker:
+      - image: circleci/node:latest
+        auth:
+          username: $docker_username
+          password: $docker_login
+    steps:
+      - checkout
+      - run: echo "This is a test"
+      - run: npm install
+      - run: npm test -- --coverage
   build:
     working_directory: ~/usr/app
     docker:
@@ -8,36 +20,14 @@ jobs:
         auth:
           username: $docker_username
           password: $docker_login
-    
-  # services:
-  #   - docker
     steps:
       - checkout
-      # - run: sudo systemctl start docker
+      - run: echo "Test passed. Building app."
       - run: npm install
-      # - run: 
-      #     command: "sudo docker build -t raudain123/docker-test-frontend ."
-      # - run: docker run raudain123/docker-test-frontend npm run test -- --coverage
-      # - run: npm start
-      - run: npm test -- --coverage
-#   test:
-#     build:
-#       docker:
-#         context: .
-#         dockerfile: Dockerfile.dev
-    
-#     steps:
-#       - checkout
-#       - run: npm run test:coveragee
+      - run: npm build
 
-# workflows:
-#   version: 2
-#   build_and_test:
-#     jobs:
-#       - build
-#       - test:
-#           requires:
-#             - build
-#           filters:
-#             branches:
-#               only: master
+workflows:
+  build_and_test:
+    jobs:
+      - test
+      - build
