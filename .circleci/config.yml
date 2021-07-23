@@ -24,7 +24,7 @@ jobs:
       - checkout
       - run: echo "Test passed. Building app."
       - run: npm install
-      - run: npm build
+      - run: npm run build
 
 workflows:
   build_and_test:
